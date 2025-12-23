@@ -1,40 +1,18 @@
-﻿using Microsoft.VisualBasic;
+﻿using System.IO.Pipelines;
+using Microsoft.VisualBasic;
 
 namespace tests;
 
 public class UnitTest1
 {
-
-
     [Fact]
-    public void PassingTest()
+    public void password_should_be_3()
     {
-        Assert.Equal(4, Add(2, 2));
-    }
+        string filePath = "Inputs/day1part1.txt";
+        Day1Part1 d1p1 = new Day1Part1();
+        var result = d1p1.SolveDay1Part1(filePath);
+        Console.WriteLine(result);
 
-    [Fact]
-    public void FailingTest()
-    {
-        Assert.Equal(5, Add(2, 2));
-    }
-
-    int Add(int x, int y)
-    {
-        return x + y;
-    }
-
-    [Theory]
-    [InlineData(3)]
-    [InlineData(5)]
-    [InlineData(6)]
-    [InlineData(7)]
-    public void MyFirstTheory(int value)
-    {
-        Assert.True(IsOdd(value));
-    }
-
-    bool IsOdd(int value)
-    {
-        return value % 2 == 1;
+        Assert.Equal(3, result);
     }
 }

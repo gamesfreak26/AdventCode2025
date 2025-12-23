@@ -29,9 +29,9 @@ public class Day1Part1
         return FileContents;
     }
 
-    public void SolveDay1Part1(string FilePath)
+    public int SolveDay1Part1(string FilePath)
     {
-        Console.WriteLine("Reading File");
+        Console.WriteLine("Reading File: " + FilePath);
         var fileLines = ReadEntireFile(FilePath);
         Console.WriteLine("Done Reading File");
 
@@ -60,5 +60,6 @@ public class Day1Part1
         }
 
         Console.WriteLine(password);
+        return password;
     }
 }
