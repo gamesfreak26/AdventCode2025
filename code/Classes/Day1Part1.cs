@@ -2,61 +2,48 @@ using System;
 
 public class Day1Part1
 {
-    private int startingPosition;
-    private int currentPosition;
-    private int password;
+    private int StartingPosition;
+    private int CurrentPosition;
+    private int Password;
+    private string Path;
 
-    public Day1Part1()
+    public Day1Part1(string FilePath)
     {
-        startingPosition = 50;
-        currentPosition = startingPosition;
-        password = 0;
+        StartingPosition = 50;
+        CurrentPosition = StartingPosition;
+        Password = 0;
+        Path = FilePath;
     }
 
-    private List<string> ReadEntireFile(string path)
+    public int SolveDay1Part1()
     {
-        List<string> FileContents = new List<string>();
-
-        try
-        {
-            FileContents = [.. File.ReadAllLines(path)];
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Exception: " + e.Message);
-        }
-
-        return FileContents;
-    }
-
-    public int SolveDay1Part1(string FilePath)
-    {
-        var fileLines = ReadEntireFile(FilePath);
+        InputReader inputReader = new InputReader(Path);
+        var fileLines = inputReader.ReadEntireFile();
 
         foreach (var line in fileLines)
         {
             if (line[0] == 'L')
             {
-                currentPosition -= int.Parse(line[1..]);
-                var currentPositionModulo = currentPosition % 100;
+                CurrentPosition -= int.Parse(line[1..]);
+                var currentPositionModulo = CurrentPosition % 100;
 
                 if (currentPositionModulo == 0)
                 {
-                    password += 1;
+                    Password += 1;
                 }
             }
             else
             {
-                currentPosition += int.Parse(line[1..]);
-                var currentPositionModulo = currentPosition % 100;
+                CurrentPosition += int.Parse(line[1..]);
+                var currentPositionModulo = CurrentPosition % 100;
 
                 if (currentPositionModulo == 0)
                 {
-                    password += 1;
+                    Password += 1;
                 }
             }
         }
 
-        return password;
+        return Password;
     }
 }
