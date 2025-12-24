@@ -31,9 +31,7 @@ public class Day1Part1
 
     public int SolveDay1Part1(string FilePath)
     {
-        Console.WriteLine("Reading File: " + FilePath);
         var fileLines = ReadEntireFile(FilePath);
-        Console.WriteLine("Done Reading File");
 
         foreach (var line in fileLines)
         {
@@ -59,7 +57,6 @@ public class Day1Part1
             }
         }
 
-        Console.WriteLine(password);
         return password;
     }
 }

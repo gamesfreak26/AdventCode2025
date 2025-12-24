@@ -22,4 +22,9 @@
     <ProjectReference Include="..\code\code.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <None Update="day1part1.txt" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+
 </Project>
